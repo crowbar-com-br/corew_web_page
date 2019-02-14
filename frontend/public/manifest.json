@@ -1,0 +1,15 @@
+{
+  "short_name": "Corew",
+  "name": "Corew Web Page",
+  "icons": [
+    {
+      "src": "./assets/img/favicon.png",
+      "sizes": "600x600",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#4D4D4D",
+  "background_color": "#FEFEFE"
+}

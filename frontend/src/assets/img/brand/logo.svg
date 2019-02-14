@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="4000"
+   height="1000"
+   viewBox="0 0 1058.3333 264.58334"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.2 2405546, 2018-03-11"
+   sodipodi:docname="corew.svg"
+   inkscape:export-filename="/home/gruber/corew_2.png"
+   inkscape:export-xdpi="35.614647"
+   inkscape:export-ydpi="35.614647">
+  <defs
+     id="defs2">
+    <linearGradient
+       osb:paint="solid"
+       id="linearGradient3023">
+      <stop
+         id="stop3021"
+         offset="0"
+         style="stop-color:#ff6600;stop-opacity:1;" />
+    </linearGradient>
+    <linearGradient
+       osb:paint="solid"
+       id="linearGradient2277">
+      <stop
+         id="stop2275"
+         offset="0"
+         style="stop-color:#b3b3b3;stop-opacity:1;" />
+    </linearGradient>
+    <filter
+       id="filter3964"
+       style="color-interpolation-filters:sRGB"
+       x="-0.2"
+       width="1.4"
+       y="-0.2"
+       height="1.4"
+       inkscape:menu-tooltip="Paint objects with a transparent turbulence which wraps around color edges"
+       inkscape:menu="Distort"
+       inkscape:label="Swirl">
+      <feGaussianBlur
+         id="feGaussianBlur3946"
+         result="result10"
+         stdDeviation="3" />
+      <feBlend
+         id="feBlend3948"
+         result="fbSourceGraphic"
+         in="result10"
+         mode="normal"
+         in2="result10" />
+      <feGaussianBlur
+         id="feGaussianBlur3950"
+         in="fbSourceGraphic"
+         result="result8"
+         stdDeviation="3" />
+      <feTurbulence
+         id="feTurbulence3952"
+         baseFrequency="0.2"
+         numOctaves="1"
+         type="fractalNoise"
+         result="result7"
+         seed="0" />
+      <feComposite
+         id="feComposite3954"
+         in="result8"
+         operator="in"
+         result="result6"
+         in2="result8" />
+      <feDisplacementMap
+         id="feDisplacementMap3956"
+         result="result4"
+         scale="50"
+         yChannelSelector="G"
+         xChannelSelector="R"
+         in="result7"
+         in2="result6" />
+      <feComposite
+         id="feComposite3958"
+         k3="1"
+         k1="1"
+         in="result8"
+         operator="arithmetic"
+         result="result2"
+         in2="result4"
+         k2="0"
+         k4="0" />
+      <feComposite
+         id="feComposite3960"
+         operator="in"
+         in="fbSourceGraphic"
+         result="fbSourceGraphic"
+         in2="result2" />
+      <feDisplacementMap
+         id="feDisplacementMap3962"
+         xChannelSelector="R"
+         scale="50"
+         yChannelSelector="G"
+         in2="result4" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.175"
+     inkscape:cx="1624.8581"
+     inkscape:cy="523.94112"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     units="px"
+     width="2500px"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="719"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid10" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-32.416673)">
+    <g
+       transform="matrix(0.50812849,0,0,0.50812849,-2.9993684,148.23651)"
+       id="layer1-5"
+       inkscape:label="Camada 1">
+      <circle
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#4d4d4d;stroke-width:30;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:0, 29.99999982, 59.99999965, 89.99999947, 119.9999993, 149.99999912, 179.99999895, 209.99999878, 239.9999986, 269.99999843, 299.99999825, 329.99999808, 359.9999979, 389.99999773, 419.99999755;stroke-dashoffset:3;stroke-opacity:1;paint-order:normal"
+         id="circle14"
+         cx="264.58334"
+         cy="32.416653"
+         r="123.59451" />
+      <circle
+         r="159.52913"
+         cy="32.416653"
+         cx="264.58334"
+         id="circle825"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#ff8822;stroke-width:30;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:0, 29.99999982, 59.99999965, 89.99999947, 119.9999993, 149.99999912, 179.99999895, 209.99999878, 239.9999986, 269.99999843, 299.99999825, 329.99999808, 359.9999979, 389.99999773, 419.99999755;stroke-dashoffset:153;stroke-opacity:1;paint-order:normal" />
+      <circle
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#4d4d4d;stroke-width:30;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:0, 29.99999982, 59.99999965, 89.99999947, 119.9999993, 149.99999912, 179.99999895, 209.99999878, 239.9999986, 269.99999843, 299.99999825, 329.99999808, 359.9999979, 389.99999773, 419.99999755;stroke-dashoffset:252;stroke-opacity:1;paint-order:normal"
+         id="circle829"
+         cx="264.58334"
+         cy="32.416653"
+         r="194.38251" />
+      <circle
+         r="100.49335"
+         cy="32.416653"
+         cx="264.58334"
+         id="path104"
+         style="opacity:1;fill:#ff8822;fill-opacity:1;stroke:none;stroke-width:109.51456451;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
+      <circle
+         r="231.05685"
+         cy="32.416653"
+         cx="264.58334"
+         id="circle842"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#ff8822;stroke-width:30;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:719.9999958, 719.9999958;stroke-dashoffset:300;stroke-opacity:1;paint-order:normal" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:50.79999924px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="245.57169"
+       y="241.7579"
+       id="text64"><tspan
+         sodipodi:role="line"
+         id="tspan62"
+         x="245.57169"
+         y="241.7579"
+         style="font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;font-size:211.66667175px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans Ultra-Light';fill:#4d4d4d;fill-opacity:1;stroke-width:0.26458332">COREW</tspan></text>
+  </g>
+</svg>

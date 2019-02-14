@@ -1,0 +1,28 @@
+// Here you can add other styles
+$primary:	#FF8822;
+
+::-moz-selection { /* Code for Firefox */
+	color: #FFF;
+	background: #FF8822;
+}
+
+::selection {
+	color: #FFF;
+	background: #FF8822;
+}
+
+.no-width.btn-block {
+	width: auto;
+}
+
+.no-margin {
+	margin: 0px;
+}
+
+.no-block	{
+	display: grid;
+}
+
+.center {
+	text-align: center;
+}
