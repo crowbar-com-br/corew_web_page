@@ -22,27 +22,76 @@ import {
 	PaginationLink
 } from 'reactstrap';
 
-var drop = false;
+var drop	= false,
+		add		= true;
 
+var form = [
+	{
+		type: "field",
+		name: "name",
+		path: "ms.name",
+		title: "Nome",
+		placeholder: "Nome do Micro Serviço",
+		required: "required"
+	},
+	{
+		type: "field",
+		name: "description",
+		path: "ms.description",
+		title: "Descrição",
+		placeholder: "Descrição do Micro Serviço",
+		required: "required"
+	},
+	{
+		type: "field",
+		name: "slug",
+		path: "ms.slug",
+		title: "Slug",
+		placeholder: "slug",
+		required: "required"
+	},
+	{
+		type: "select",
+		name: "state",
+		path: "ms.state",
+		title: "Estado",
+		placeholder: "Estado",
+		options: [
+			{ value: "active", title: "Ativo" },
+			{ value: "inactive", title: "Inativo" }
+		],
+		required: "required"
+	},
+	{
+		type: "table",
+		nameTable: "urls",
+		nameField: "url",
+		pathTable: "ms.urls",
+		title: "URLs",
+		placeholder: "www.sam.ple:8080/sample",
+		required: "",
+		head: "URL"
+	},
+];
 class APIGateway extends Component {
 
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			modal: false,
+			modal				: false,
 			modal_danger: false,
-			title: "",
-			add: true,
-			index: "",
+			title				: "",
+			add					: true,
+			index				: "",
 			ms: {
-				name: "",
-				description: "",
-				slug: "",
-				urls: [],
-				state: "active",
+				name				: "",
+				description	: "",
+				slug				: "",
+				urls				: [],
+				state				: "active",
 			},
-			url: "",
+			url	: "",
 			list: [
 				{
 					name: "Authentication",
@@ -61,9 +110,9 @@ class APIGateway extends Component {
 			],
 		}
 
-		this.toggle = this.toggle.bind(this);
-		this.toggleDanger = this.toggleDanger.bind(this);
-		this.handleChange = this.inputChangeHandler.bind(this);
+		this.toggle				= this.toggle.bind(this);
+		this.toggleDanger	= this.toggleDanger.bind(this);
+		this.handleChange	= this.inputChangeHandler.bind(this);
 	}
 
 	toggle() {
@@ -102,7 +151,7 @@ class APIGateway extends Component {
 										<th>Estado</th>
 										<th>
 											<div className="text-center">
-												<Button className="btn-pill no-width" color="success" size="md" onClick={ e => { this.setState({ title: "Adicionar"}); this.toggle(); }}><i className="fa fa-plus"/></Button>
+												<Button className="btn-pill no-width" color="success" size="md" onClick={ e => { this.setState({ title: "Adicionar"}); add = true; this.toggle(); }}><i className="fa fa-plus"/></Button>
 											</div>
 										</th>
 									</tr>
@@ -135,11 +184,26 @@ class APIGateway extends Component {
 								<Modal isOpen={ this.state.modal } toggle={ this.toggle } className={ this.props.className }>
 									<ModalHeader toggle={ this.toggle }>{ this.state.title } Micro Serviço</ModalHeader>
 									<ModalBody>
-										<FormField father={ this } id="name" path="ms.name" title="Nome" placeholder="Nome do Micro Serviço" value={ this.state.ms.name } required="required" />
-										<FormField father={ this } id="description" path="ms.description" title="Descrição" placeholder="Descrição do Micro Serviço" value={ this.state.ms.description } required="required" />
-										<FormField father={ this } id="slug" path="ms.slug" title="Slug" placeholder="slug" value={ this.state.ms.slug } required="required" />
-										<FormSelect father={ this } id="state" path="ms.state" title="Estado" placeholder="Estado" value={ this.state.ms.state } options={ [{value: "active", title: "Ativo"}, {value: "inactive", title: "Inativo"}] } required="required" />
-										<FormTable father={ this } id="urls" name="url" title="URLs" placeholder="www.sam.ple:8080/sample" value={ this.state.url } required="" head="URL" list={ this.state.ms.urls } pathTable="ms.urls" />
+										{
+											form.map(function(item, index) {
+												switch (item.type) {
+													case "field":
+														return(
+															<FormField father={ this } id={ item.name } path={ item.path } title={ item.title } placeholder={ item.placeholder } required={ item.required } />
+														);
+													case "select":
+														return(
+															<FormSelect father={ this } id={ item.name } path={ item.path } title={ item.title } placeholder={ item.placeholder } options={ item.options } required={ item.required } />
+														);
+													case "table":
+														return(
+															<FormTable father={ this } id={ item.nameTable } name={ item.nameField } pathTable={ item.pathTable } title={ item.title } placeholder={ item.placeholder } head={ item.head } required={ item.required } />
+														);
+													default:
+														return(<div />);
+												}
+											}, this)
+										}
 									</ModalBody>
 									<ModalFooter>
 										<Button color="success" onClick={ e => { addMS(this, "list", "ms") } }>{ this.state.title }</Button>
@@ -167,26 +231,26 @@ class APIGateway extends Component {
 	}
 }
 
-const FormField = ({ father, id, path, title, placeholder, value, required }) => {
+const FormField = ({ father, id, path, title, placeholder, required }) => {
 	return (
 		<Row>
 			<Col xs="12">
 				<FormGroup>
 					<Label htmlFor={ id }>{ title }</Label>
-					<Input type="text" id={ id } path={ path } placeholder={ placeholder } value={ value } { ...required } onChange={ e => { alterState(father, path, e.target.value) } } />
+					<Input type="text" id={ id } path={ path } placeholder={ placeholder } value={ getState(path, father.state) } { ...required } onChange={ e => { alterState(father, path, e.target.value) } } />
 				</FormGroup>
 			</Col>
 		</Row>
 	)
 }
 
-const FormSelect = ({ father, id, path, title, placeholder, value, options, required }) => {
+const FormSelect = ({ father, id, path, title, placeholder, options, required }) => {
 	return (
 		<Row>
 			<Col xs="12">
 				<FormGroup>
 					<Label htmlFor={ id }>{ title }</Label>
-					<Input type="select" id={ id } path={ path } placeholder={ placeholder } value={ value } { ...required } onChange={ e => { alterState(father, path, e.target.value) } }>
+					<Input type="select" id={ id } path={ path } placeholder={ placeholder } value={ getState(path, father.state) } { ...required } onChange={ e => { alterState(father, path, e.target.value) } }>
 						{
 							options.map(function(item, index) {
 								return (
@@ -201,7 +265,7 @@ const FormSelect = ({ father, id, path, title, placeholder, value, options, requ
 	);
 }
 
-const FormTable = ({ father, id, name, title, placeholder, value, required, head, list, pathTable }) => {
+const FormTable = ({ father, id, name, title, placeholder, required, head, pathTable }) => {
 
 	return (
 		<Row>
@@ -209,9 +273,9 @@ const FormTable = ({ father, id, name, title, placeholder, value, required, head
 				<FormGroup>
 					<Label htmlFor={ id }>{ title }</Label>
 					<InputGroup>
-						<Input type="text" id={ id } name={ name } placeholder={ placeholder } value={ value } { ...required } onChange={ father.handleChange } />
+						<Input type="text" id={ id } name={ name } placeholder={ placeholder } value={ getState(name, father.state) } { ...required } onChange={ father.handleChange } />
 						<InputGroupAddon addonType="append">
-							<Button className="btn-ghost-* no-width" color="ghost-success" size="sm" onClick={ e => { alterStateList(father, pathTable, father.state.url); alterState(father, name, "") } }><i className="fa fa-plus"/></Button>
+							<Button className="btn-ghost-* no-width" color="ghost-success" size="sm" onClick={ e => { alterStateList(father, pathTable, getState(name, father.state)); alterState(father, name, "") } }><i className="fa fa-plus"/></Button>
 						</InputGroupAddon>
 					</InputGroup>
 					<Table responsive>
@@ -222,7 +286,7 @@ const FormTable = ({ father, id, name, title, placeholder, value, required, head
 						</thead>
 						<tbody>
 							{
-								list.map(function(item, index) {
+								getList(father, pathTable).map(function(item, index) {
 									return(
 										<tr key={ index }>
 											<td>{ item }</td>
@@ -243,14 +307,19 @@ const FormTable = ({ father, id, name, title, placeholder, value, required, head
 	)
 }
 
+function getList(father, pathTable) {
+	if(getState(pathTable, father.state) === undefined) {
+		alterState(father, pathTable, []);
+	}
+	return getState(pathTable, father.state);
+}
+
 function getColorFromState(state) {
 	switch (state) {
 		case "active":
 			return "success";
-			break;
 		case "inactive":
 			return "danger";
-			break;
 		default:
 			return "secondary";
 	}
@@ -268,7 +337,19 @@ function set(path, value, obj) {
 	schema[pList[len-1]] = value;
 }
 
-function setList(path, value, obj) {
+function getState(path, obj) {
+	var schema = obj;
+	var pList = path.split('.');
+	var len = pList.length;
+	for(var i = 0; i < len-1; i++) {
+		var elem = pList[i];
+		if( !schema[elem] ) schema[elem] = {}
+		schema = schema[elem];
+	}
+	return schema[pList[len-1]];
+}
+
+function pushList(path, value, obj) {
 	var schema = obj;
 	var pList = path.split('.');
 	var len = pList.length;
@@ -303,7 +384,7 @@ function alterState(father, name, value) {
 
 function alterStateList(father, name, value) {
 	if (name.includes('.')) {
-		setList(name, value, father.state);
+		pushList(name, value, father.state);
 		father.setState({ "temp": "null" });
 	}
 }
@@ -314,7 +395,7 @@ function dropStateList(father, name, index) {
 }
 
 function addMS(father, path, item) {
-	if(father.state.add) {
+	if(add) {
 		alterState(father, path, [...father.state[path], father.state[item]]);
 	} else {
 		alterState(father, path + "." + father.state.index, father.state[item]);
@@ -329,8 +410,8 @@ function loadMS(father, path, index, item) {
 	let ms	= father.state[path][index];
 	alterState(father, item, {name: ms.name, description: ms.description, slug: ms.slug, urls: ms.urls, state: ms.state });
 	alterState(father, "title", "Modificar" );
-	alterState(father, "add", false );
 	alterState(father, "index", index );
+	add = false;
 	father.toggle();
 }
 
